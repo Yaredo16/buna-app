@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic&display=swap");
+body {
+  font-family: "Noto Sans Ethiopic", sans-serif;
+  background-color: white;
+  color: #fff3e0; 
+  text-align: center;
+  margin: 0;
+}
+
+button {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background-color: #6d4c41; 
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #5cb85c;
+  padding: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #4e342e;
+}
+
+.navbar button {
+  background: #d84315; 
+}
+
+
+.todo-container {
+  max-width: 450px;
+  margin: 50px auto;
+  background: #4e342e;
+  padding: 20px;
+  min-height: 100vh;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.todo-container h1 {
+  color: #ffd54f;
+}
+
+
+.todo-form {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.todo-form input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #ffd54f;
+  border-radius: 5px;
+  background: #5d4037;
+  color: white;
+}
+
+.todo-form input::placeholder {
+  color: #bcaaa4;
+}
+
+
+.todo-list {
+  padding: 0;
+  margin-top: 20px;
+  color: #ffd54f;
+}
+
+.todo-list li {
+  background: #6d4c41;
+  margin: 10px 0;
+
+  padding: 12px;
+  border-radius: 5px;
+  display: flex;
+  color: #ffd54f;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s ease-in-out;
+}
+
+.todo-list li:hover {
+  background: #8d6e63;
+}
+
+.todo-list button {
+  background: #d84315; 
+  padding: 5px 8px;
+}
+
+.footer {
+  background-color: #5cb85c; 
+  color: #4e342e; 
+  text-align: center; 
+  padding: 20px; 
+  position: relative; 
+  top: 0; 
+  width: 100%; 
+}
+
+main {
+  flex: 1;
+}
+.footer a {
+  color: #61dafb; 
+  text-decoration: none; 
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
