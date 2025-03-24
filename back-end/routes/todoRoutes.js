@@ -3,30 +3,56 @@ const Todo = require('../models/Todo');
 
 const router = express.Router();
 
-// Create Todo
+
 router.post('/', async (req, res) => {
     const { task } = req.body;
-    const newTodo = new Todo({ task }); // Removed userId
-    await newTodo.save();
-    res.json(newTodo);
+    try {
+        const newTodo = new Todo({ task });
+        await newTodo.save();
+        res.status(201).json(newTodo); 
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error creating todo' }); 
+    }
 });
 
-// Get All Todos
+
 router.get('/', async (req, res) => {
-    const todos = await Todo.find(); // Removed userId filter
-    res.json(todos);
+    try {
+        const todos = await Todo.find();
+        res.status(200).json(todos); 
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error fetching todos' });
+    }
 });
 
-// Update Todo
+
 router.put('/:id', async (req, res) => {
-    await Todo.findByIdAndUpdate(req.params.id, req.body);
-    res.json({ message: "Todo updated" });
+    try {
+        const updatedTodo = await Todo.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!updatedTodo) {
+            return res.status(404).json({ message: 'Todo not found' }); 
+        }
+        res.status(200).json({ message: "Todo updated", todo: updatedTodo });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error updating todo' });
+    }
 });
 
-// Delete Todo
+
 router.delete('/:id', async (req, res) => {
-    await Todo.findByIdAndDelete(req.params.id);
-    res.json({ message: "Todo deleted" });
+    try {
+        const deletedTodo = await Todo.findByIdAndDelete(req.params.id);
+        if (!deletedTodo) {
+            return res.status(404).json({ message: 'Todo not found' }); 
+        }
+        res.status(200).json({ message: "Todo deleted" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error deleting todo' });
+    }
 });
 
 module.exports = router;
