@@ -8,7 +8,8 @@ const todoRoutes = require("./routes/todoRoutes");
 dotenv.config();
 
 const app = express();
-const PORT = Process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
+
 
 app.use(cors()); // Enable CORS
 app.use(express.json());
