@@ -13,7 +13,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "build": "yarn install"
+    "dev": "nodemon server.js",
+    "build": "echo 'No build needed for back-end'"
   },
   "name": "back-end",
   "version": "1.0.0",
